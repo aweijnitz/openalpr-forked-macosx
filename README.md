@@ -32,7 +32,9 @@ A minor memory leak has also been fixed in the C++ code for the Java binding.
 ### Building the Java bindings
 
   cd src/bindings/java
-  ./clean.sh && ./make.sh && ./pack.sh && ./verify.sh
+  ./clean.sh && ./make.sh && ./pack.sh && ./dist.sh && ./verify.sh
+
+  The folder `dist` now contains the compiled java bindings and the required native libraries.
 
 ## Development
 
