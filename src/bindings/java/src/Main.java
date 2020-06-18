@@ -31,7 +31,7 @@ public class Main {
 
         // Read an image into a byte array and send it to OpenALPR
         Path path = Paths.get(licensePlate);
-        System.out.println("LAODING IMAGE FROM" + path.toString());
+        System.out.println("LOADING IMAGE FROM" + path.toString());
         byte[] imagedata = Files.readAllBytes(path);
 
         AlprResults results = alpr.recognize(imagedata);
@@ -52,6 +52,7 @@ public class Main {
                 System.out.format("%-15s%-8f\n", plate.getCharacters(), plate.getOverallConfidence());
             }
         }
+        System.out.println("ACTUAL PLATE NUMBER: H787POJ"); 
 
 
         // Make sure to call this to release memory
