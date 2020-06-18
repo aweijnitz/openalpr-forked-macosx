@@ -1,9 +1,9 @@
-# Openalpr, forked and modified to run on modern MacOSX and Java v13
+# Openalpr, forked and modified to run on modern MacOSX, Linux with Java v13 and v14
 
 ## About
 
 This is a fork from the openalpr main repo, corresponding to OpenAlpr v2.3.0.
-It has been modified to compile and run locally on a MacOSX Catalina, using OpenJDK v13 for the Java bindings.
+It has been modified to compile and run locally on a MacOSX Catalina and to produce a Linux build using a Docker build image, using OpenJDK v13 and v14 for the Java bindings.
 
 For details about installation and general documentation on openalpr see the [original openalpr repository](https://github.com/openalpr/openalpr)
 
@@ -29,12 +29,19 @@ A minor memory leak has also been fixed in the C++ code for the Java binding.
   buildOpenAlprOnMacOSX.sh
   --> The alpr command line tool is now in src/build, along with various libraries
 
-### Building the Java bindings
+### Building the Java bindings on MacOSX
 
   cd src/bindings/java
   ./clean.sh && ./make.sh && ./pack.sh && ./dist.sh && ./verify.sh
 
   The folder `dist` now contains the compiled java bindings and the required native libraries.
+
+### Build Linux version using the Docker build image
+
+In the root folder, do
+
+  ./buildImage.sh
+  ./runImage.sh
 
 ## Development
 
