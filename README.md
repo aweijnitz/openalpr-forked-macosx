@@ -11,6 +11,8 @@ For details about installation and general documentation on openalpr see the [or
 
 OpenAlpr is about the only available open source ALPR software around for free. Unfortunatley the project has fallen asleep and is not kept current. This goes for the Java and Javascript bindings especially.
 
+## Changes from original
+
 This repo is the regular openalpr source, but the Java bindings have been fixed and updated to compile and work with Java 13. The main difference is how header files are generated.
 
 A minor memory leak has also been fixed in the C++ code for the Java binding.
