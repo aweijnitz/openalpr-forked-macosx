@@ -27,7 +27,7 @@ A minor memory leak has also been fixed in the C++ code for the Java binding.
 ### Building openalpr
 
   buildOpenAlprOnMacOSX.sh
-  # The alpr command line tool is now in src/build, along with various libraries
+  --> The alpr command line tool is now in src/build, along with various libraries
 
 ### Building the Java bindings
 
