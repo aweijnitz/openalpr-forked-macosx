@@ -6,15 +6,21 @@ public class Alpr {
 
     static {
         try {
-            System.load("/Users/anders/IdeaProjects/openalpr/src/build/openalpr/libopenalpr.2.dylib");
-            System.load("/Users/anders/IdeaProjects/openalpr/src/bindings/java/libopenalprjni.so");
+            // Expecting full absolute path to file, including filname.
+            String dylibLocation = System.getenv("OPENALPR_LOCATION_DYLIB");
+            String jniLocation = System.getenv("OPENALPR_LOCATION_JNI");
+            System.out.println("Loading native library 'libopenalpr.2.dylib' from " + dylibLocation);
+            System.out.println("Loading native library 'libopenalprjni.so' from " + jniLocation);
+
+            System.load(dylibLocation);
+            System.load(jniLocation);
 
         } catch (UnsatisfiedLinkError e) {
           System.err.println("Native code library failed to load.\n" + e);
           System.exit(1);
         }
       }
-      
+
     private native void initialize(String country, String configFile, String runtimeDir);
     private native void dispose();
 
