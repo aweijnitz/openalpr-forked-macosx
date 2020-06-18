@@ -1,4 +1,4 @@
-# FORK OF OPEN ALPR TO GET IT WORKING ON A MODERN MAC CATALINA WIHT MODERN JAVA
+# Openalpr, forked and modified to run on modern MacOSX and Java v13
 
 ## About
 
