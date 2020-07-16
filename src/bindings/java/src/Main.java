@@ -10,6 +10,8 @@ import java.nio.file.Files;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        String nativeLibFile = System.getenv("OPENALPR_LOCATION_DYLIB");
+        String jniFile = System.getenv("OPENALPR_LOCATION_JNI");
 
         String country = "", configfile = "", runtimeDataDir = "", licensePlate = "";
         if (args.length == 4) {
@@ -24,7 +26,7 @@ public class Main {
             System.exit(1);
         }
 
-        Alpr alpr = new Alpr(country, configfile, runtimeDataDir);
+        Alpr alpr = new Alpr(country, configfile, runtimeDataDir, nativeLibFile, jniFile);
 
         alpr.setTopN(20);
         alpr.setDefaultRegion("eu");

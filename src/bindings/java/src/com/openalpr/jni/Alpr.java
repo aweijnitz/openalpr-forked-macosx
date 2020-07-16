@@ -5,20 +5,7 @@ import com.openalpr.jni.json.JSONException;
 public class Alpr {
 
     static {
-        try {
-            // Expecting full absolute path to file, including filname.
-            String dylibLocation = System.getenv("OPENALPR_LOCATION_DYLIB");
-            String jniLocation = System.getenv("OPENALPR_LOCATION_JNI");
-            System.out.println("Loading native library 'libopenalpr.2.dylib' from " + dylibLocation);
-            System.out.println("Loading native library 'libopenalprjni.so' from " + jniLocation);
 
-            System.load(dylibLocation);
-            System.load(jniLocation);
-
-        } catch (UnsatisfiedLinkError e) {
-          System.err.println("Native code library failed to load.\n" + e);
-          System.exit(1);
-        }
       }
 
     private native void initialize(String country, String configFile, String runtimeDir);
@@ -36,9 +23,25 @@ public class Alpr {
 
 
 
-    public Alpr(String country, String configFile, String runtimeDir)
+    public Alpr(String country, String configFile, String runtimeDir, String nativeLibFile, String jniFile)
     {
+        loadNativeLibraries(nativeLibFile, jniFile);
         initialize(country, configFile, runtimeDir);
+    }
+
+    public void loadNativeLibraries(String nativeLibFile, String jniFile) {
+        try {
+            // Expecting full absolute path to file, including filname.
+            System.out.println("com.openalpr.jni.Alpr - Loading native library from " + nativeLibFile);
+            System.out.println("com.openalpr.jni.Alpr - Loading jni library from " + jniFile);
+
+            System.load(nativeLibFile);
+            System.load(jniFile);
+
+        } catch (UnsatisfiedLinkError e) {
+          System.err.println("Native code library failed to load.\n" + e);
+          System.exit(1);
+        }
     }
 
     public void unload()
